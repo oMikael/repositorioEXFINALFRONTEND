@@ -1,7 +1,7 @@
 $('#login_button').on('click', function(){
   // cargar email y password
-  let email = $(email)
-  let password = $(password)
+  let email = $("#email").val()
+  let password = $("#password").val()
 
   json_to_send = {
     "email": email,
@@ -14,7 +14,7 @@ $('#login_button').on('click', function(){
 
   $.ajax({
     url: 'https://herokuexfinal.herokuapp.com/users/login',
-    // url: 'https://tuapp.herokuapp.com/users/login',
+    //url: 'http://localhost:3000/users/login',
     headers: {
         'Content-Type':'application/json'
     },
@@ -27,6 +27,7 @@ $('#login_button').on('click', function(){
       window.location = './todo.html'
     },
     error: function(error_msg) {
+      console.log(error_msg)
       alert((error_msg["responseText"]));
     }
   });
